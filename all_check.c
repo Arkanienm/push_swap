@@ -6,7 +6,7 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:34:58 by amurtas           #+#    #+#             */
-/*   Updated: 2025/12/17 13:44:56 by amurtas          ###   ########.fr       */
+/*   Updated: 2025/12/17 15:32:22 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	check_syntax(char *str)
 
 int	check_duplicate(t_stack_node *a, int n)
 {
-	t_stack_node *start;
-	
 	if (!a)
 		return (0);
 	while (a != NULL)
