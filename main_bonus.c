@@ -1,17 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:26:01 by amurtas           #+#    #+#             */
-/*   Updated: 2025/12/17 17:27:10 by amurtas          ###   ########.fr       */
+/*   Updated: 2025/12/15 18:02:12 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
-#include "so_long_lib.h"
+#include "struct_bonus.h"
+#include "so_long_lib_bonus.h"
+
+int	anim_loop(t_data *data)
+{
+	data->loop_count++;
+	if (data->loop_count < 10000)
+		return (0);
+	data->loop_count = 0;
+	data->anim_frame ++;
+	if (data->anim_frame > 3)
+		data->anim_frame = 0;
+	if (data->anim_frame == 0)
+		data->cur_coll = data->collec;
+	else if (data->anim_frame == 1)
+		data->cur_coll = data->collec2;
+	else if (data->anim_frame == 2)
+		data->cur_coll = data->collec3;
+	else if (data->anim_frame == 3)
+		data->cur_coll = data->collec4;
+	render_map(data);
+	return (0);
+}
 
 int	all_map_verif(t_data *data)
 {
@@ -54,7 +75,7 @@ int	img_verif(t_data *lst)
 	return (1);
 }
 
-void	init_struct(t_data *lst)
+int	init_struct(t_data *lst)
 {
 	lst->map = NULL;
 	lst->mlx = NULL;
@@ -66,7 +87,19 @@ void	init_struct(t_data *lst)
 	lst->exit = NULL;
 	lst->moves_count = 0;
 	lst->collectibles_left = 0;
+	lst->collec2 = NULL;
+	lst->collec3 = NULL;
+	lst->collec4 = NULL;
+	lst->cur_coll = lst->collec;
+	lst->loop_count = 0;
+	lst->anim_frame = 0;
+	lst->player_down = NULL;
+	lst->player_left = NULL;
+	lst->player_right = NULL;
+	lst->player_up = NULL;
+	lst->enemy = NULL;
 	lst->e_verif = 0;
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -83,7 +116,7 @@ int	main(int argc, char **argv)
 		close_window(&lst);
 		return (0);
 	}
-	if ((!lst.map) || !all_map_verif(&lst))
+	if (!lst.map || !all_map_verif(&lst))
 	{
 		close_window(&lst);
 		return (0);
@@ -94,5 +127,6 @@ int	main(int argc, char **argv)
 	render_map(&lst);
 	mlx_hook(lst.window, 17, 0, close_window, &lst);
 	mlx_hook(lst.window, 2, 1L << 0, key_handler, &lst);
+	mlx_loop_hook(lst.mlx, &anim_loop, &lst);
 	mlx_loop(lst.mlx);
 }
