@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 14:47:16 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/05 12:10:52 by amurtas          ###   ########.fr       */
+/*   Created: 2025/10/15 13:20:46 by amurtas           #+#    #+#             */
+/*   Updated: 2025/10/29 10:04:43 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	char **args;
+	size_t	i;
 
-	if (argc < 2)
-		return (0);
-	if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	if (argc > 2)
-		*args = argv[1];
+	i = 0;
+	if (size == 0)
+		return (ft_strlen(src));
+	while (src[i] != '\0' && i < size - 1)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }

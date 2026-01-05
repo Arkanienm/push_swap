@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 14:47:16 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/05 12:10:52 by amurtas          ###   ########.fr       */
+/*   Created: 2025/10/17 14:38:56 by amurtas           #+#    #+#             */
+/*   Updated: 2025/10/29 10:05:10 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char **args;
+	int		i;
+	char	*cs;
 
-	if (argc < 2)
-		return (0);
-	if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	if (argc > 2)
-		*args = argv[1];
+	if (!s1 || !s2)
+		return (NULL);
+	cs = ft_calloc(sizeof(char), (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!cs)
+		return (NULL);
+	i = 0;
+	while ((s1)[i] != '\0')
+	{
+		cs[i] = (s1)[i];
+		i++;
+	}
+	i = 0;
+	while ((s2)[i] != '\0')
+	{
+		cs[ft_strlen(s1) + i] = (s2)[i];
+		i++;
+	}
+	cs[ft_strlen(s1) + i] = '\0';
+	return (cs);
 }

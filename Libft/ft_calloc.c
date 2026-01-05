@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 14:47:16 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/05 12:10:52 by amurtas          ###   ########.fr       */
+/*   Created: 2025/10/16 10:23:13 by amurtas           #+#    #+#             */
+/*   Updated: 2025/10/27 10:40:16 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char **args;
+	void	*var;
 
-	if (argc < 2)
-		return (0);
-	if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	if (argc > 2)
-		*args = argv[1];
+	if (nmemb == 0 || size == 0)
+	{
+		var = malloc(0);
+		if (!var)
+			return (NULL);
+		return (var);
+	}
+	if (nmemb > (size_t)-1 / size)
+		return (NULL);
+	var = malloc(size * nmemb);
+	if (!var)
+		return (NULL);
+	ft_bzero(var, size * nmemb);
+	return (var);
 }

@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 14:47:16 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/05 12:10:52 by amurtas          ###   ########.fr       */
+/*   Created: 2025/10/13 15:08:41 by amurtas           #+#    #+#             */
+/*   Updated: 2025/10/15 16:09:33 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	char **args;
+	size_t			i;
+	unsigned char	*s_cpy;
 
-	if (argc < 2)
-		return (0);
-	if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	if (argc > 2)
-		*args = argv[1];
+	s_cpy = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		s_cpy[i] = c;
+		i++;
+	}
+	return (s);
 }

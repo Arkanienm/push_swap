@@ -1,50 +1,33 @@
-NAME        = so_long
-NAME_BONUS  = so_long_bonus
+NAME        = push_swap
 
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g
 
-SRCS        = main.c check_map_content.c check_map_form.c check_path_utils.c \
-              check_path.c init_map.c init_sprite.c manage_ft.c rendering_map.c \
-              get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-			  check_extention_args.c
+SRCS        = main.c all_check.c ft_atol.c ft_stack_utils.c Intruction/swap.c \
+			  Intruction/push.c Intruction/rotate.c Intruction/reverse_rotate.c \
+			  
 
 OBJS        = $(SRCS:.c=.o)
 
-BONUS_SRCS  = main_bonus.c rendering_map_bonus.c \
-              check_map_content_bonus.c check_map_form.c check_path_utils.c \
-              check_path.c init_map.c init_sprite_bonus.c manage_ft_bonus.c \
-              get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-			  ft_itoa_bonus.c ft_manage_next_bonus.c init_collec_bonus.c \
-			  init_player_bonus.c check_extention_args.c
-
-BONUS_OBJS  = $(BONUS_SRCS:.c=.o)
-LIBFT       = ./ft_printf/libftprintf.a
-MLX         = ./minilibx-linux/libmlx.a
-MLX_FLAGS   = -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+FT_PRINTF       = ./ft_printf/libftprintf.a
+LIBFT       	= ./Libft/libft.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C ./ft_printf
-	make -C ./minilibx-linux
-	$(CC) $(OBJS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
-
-bonus: $(NAME_BONUS)
-
-$(NAME_BONUS): $(BONUS_OBJS)
-	make -C ./ft_printf
-	make -C ./minilibx-linux
-	$(CC) $(BONUS_OBJS) $(LIBFT) $(MLX_FLAGS) -o $(NAME_BONUS)
+	make -C ./Libft
+	$(CC) $(OBJS) $(FT_PRINTF) $(LIBFT) -o $(NAME)
 
 clean:
 	rm -f $(OBJS) $(BONUS_OBJS)
 	make clean -C ./ft_printf
-	make clean -C ./minilibx-linux
+	make clean -C ./Libft
 
 fclean: clean
 	rm -f $(NAME) $(NAME_BONUS)
 	make fclean -C ./ft_printf
+	make fclean -C ./Libft
 
 re: fclean all
 
