@@ -3,9 +3,8 @@ NAME        = push_swap
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g
 
-SRCS        = main.c all_check.c ft_atol.c ft_stack_utils.c Intruction/swap.c \
-			  Intruction/push.c Intruction/rotate.c Intruction/reverse_rotate.c \
-			  
+SRCS        = main.c all_check.c ft_atol.c ft_stack_utils.c swap.c \
+			  push.c rotate.c reverse_rotate.c \
 
 OBJS        = $(SRCS:.c=.o)
 
