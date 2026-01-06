@@ -6,7 +6,7 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:47:16 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/06 15:14:55 by amurtas          ###   ########.fr       */
+/*   Updated: 2026/01/06 15:23:41 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int	main(int argc, char **argv)
 	t_stack_node	**b;
 	
 	if (argc < 2)
-		return(0);
+		return(0);a
 	
 }
