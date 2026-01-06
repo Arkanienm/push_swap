@@ -6,7 +6,7 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:47:50 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/05 15:56:01 by amurtas          ###   ########.fr       */
+/*   Updated: 2026/01/06 12:27:44 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void			pb(t_stack_node **a, t_stack_node **b);
 void			ra(t_stack_node **a);
 void			rb(t_stack_node **b);
 void			rr(t_stack_node **a, t_stack_node **b);
+void			rra(t_stack_node **a);
+void			rrb(t_stack_node **b);
+void			rrr(t_stack_node **a, t_stack_node **b);
 t_stack_node	*ft_lst_last(t_stack_node *lst);
 
 
