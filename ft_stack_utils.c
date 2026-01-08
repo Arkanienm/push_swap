@@ -6,7 +6,7 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 11:25:14 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/08 12:21:37 by amurtas          ###   ########.fr       */
+/*   Updated: 2026/01/08 13:15:42 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,10 @@ void	ft_free_args(char **args)
 	free(args);
 }
 
-void	ft_error(t_stack_node **a)
+void	ft_error(t_stack_node **a, char **args)
 {
 	ft_free_stack(a);
+	ft_free_args(args);
 	write(2, "Error\n", 6);
 	exit (1);
 }
@@ -90,14 +91,14 @@ void	init_stack_a(t_stack_node **a, char **args)
 	while (args[i])
 	{
 		if (!check_syntax(args[i]))
-			ft_error(a);
+			ft_error(a, args);
 		nb = ft_atol(args[i]);
 		if (nb < -2147483648 || nb > 2147483647)
-			ft_error(a);
+			ft_error(a, args);
 		if (check_duplicate(*a, (int)nb))
-			ft_error(a);
+			ft_error(a, args);
 		if (!ft_append_node(a, (int)nb))
-			ft_error(a);
+			ft_error(a, args);
 		i++;
 	}
 }

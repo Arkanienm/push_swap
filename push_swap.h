@@ -6,7 +6,7 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:47:50 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/08 12:25:24 by amurtas          ###   ########.fr       */
+/*   Updated: 2026/01/08 13:16:21 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void			init_stack_a(t_stack_node **a, char **argv);
 long			ft_atol(const char	*str);
 int				check_syntax(char *str);
 int				check_duplicate(t_stack_node *a, int n);
-void			ft_error(t_stack_node **a);
+void			ft_error(t_stack_node **a, char **args);
 void			ft_free_stack(t_stack_node **lst);
 void			sa(t_stack_node **a);
 void			sb(t_stack_node **b);
@@ -43,6 +43,8 @@ void			rrb(t_stack_node **b);
 void			rrr(t_stack_node **a, t_stack_node **b);
 void 			three_sort(t_stack_node **stack);
 t_stack_node	*ft_lst_last(t_stack_node *lst);
+void			ft_free_args(char **args);
+
 
 
 
