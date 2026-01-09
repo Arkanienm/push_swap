@@ -6,7 +6,7 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:47:16 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/09 13:40:03 by amurtas          ###   ########.fr       */
+/*   Updated: 2026/01/09 18:27:04 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,28 @@ void	indexation(t_stack_node *a)
 	a = head;
 }
 
+int	find_max(t_stack_node **b)
+{
+	int				b_size;
+	int 			targ_ind;
+	t_stack_node 	*current;
+	
+	b_size = ft_lsttsize((*b));
+	targ_ind = 0;
+	current = (*b);
+	while (current->index != b_size - 1)
+	{
+		current = current->next;
+		targ_ind++;
+	}	
+	return (targ_ind);
+}
+
 void	butterfly(t_stack_node **a, t_stack_node **b, int count)
 {
 	int	i;
 	int	n;
+	int	targ_ind;
 
 	i = 0;
 	if (count <= 100)
@@ -46,21 +64,33 @@ void	butterfly(t_stack_node **a, t_stack_node **b, int count)
 		n = 30;
 	while (*a)
 	{
-		if ((*a)->index <= i + n)
-		{
-			pb(a, b);
-			i++;
-		}
 		if ((*a)->index <= i)
 		{
 			pb(a, b);
 			rb(b);
 			i++;
 		}
-		if ((*a)->index > i + n)
+		else if ((*a)->index <= i + n)
+		{
+			pb(a, b);
+			i++;
+		}
+		else if ((*a)->index > i + n)
 			ra(a);
 	}
+	while (*b)
+	{	
+		targ_ind = find_max(b);
+		if (targ_ind == 0)
+			pa(a, b);
+		else
+		{
+			if (targ_ind < ft_lsttsize((*b)) / 2)
+				rb(b);
+			else
+				rrb(b);
 	
+	}
 }
 
 t_stack_node *three_sort_max(t_stack_node *stack)
