@@ -6,7 +6,7 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:47:50 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/08 13:16:21 by amurtas          ###   ########.fr       */
+/*   Updated: 2026/01/09 12:31:25 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void			rrr(t_stack_node **a, t_stack_node **b);
 void 			three_sort(t_stack_node **stack);
 t_stack_node	*ft_lst_last(t_stack_node *lst);
 void			ft_free_args(char **args);
+int				ft_lsttsize(t_stack_node *lst);
+
 
 
 

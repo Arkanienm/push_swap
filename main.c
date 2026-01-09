@@ -6,13 +6,13 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:47:16 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/08 15:02:43 by amurtas          ###   ########.fr       */
+/*   Updated: 2026/01/09 12:57:15 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_lstsize(t_stack_node *lst)
+int	ft_lsttsize(t_stack_node *lst)
 {
 	int	i;
 
@@ -27,31 +27,28 @@ int	ft_lstsize(t_stack_node *lst)
 	return (i);
 }
 
-int	check_args(t_stack_node argc, )
+int	check_args(int argc)
 {
 	if (argc < 2)
 	{
-		ft_error(&a, NULL);
+		ft_error(NULL, NULL);
 		return(0);
 	}
-	
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
-	t_stack_node	*b;
+	//t_stack_node	*b;
 	char			**args;
 	int				i;
 
-	if (argc < 2)
-	{
-		ft_error(&a, NULL);
-		return(0);
-	}
+	if (!check_args(argc))
+		return (0);
 	i = 1;
 	a = NULL;
-	b = NULL;
+	//b = NULL;
 	while (argv[i])
 	{
 		args = ft_split(argv[i], ' ');
@@ -59,7 +56,7 @@ int	main(int argc, char **argv)
 		i++;
 		ft_free_args(args);
 	}
-	if (argc == 4)
+	if (ft_lsttsize(a) == 3)
 		three_sort(&a);
 	ft_free_stack(&a);
 	return (0);

@@ -6,11 +6,62 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:47:16 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/06 15:09:27 by amurtas          ###   ########.fr       */
+/*   Updated: 2026/01/09 13:40:03 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	indexation(t_stack_node *a)
+{
+	t_stack_node	*head;
+	t_stack_node	*curr;
+
+	head = a;
+	curr = a;
+	while (a)
+	{
+		a->index = 0;
+		while (curr)
+		{
+			if(a->value > curr->value)
+				a->index++;
+			curr = curr->next;
+		}
+		a = a->next;
+		curr = head;
+	}
+	a = head;
+}
+
+void	butterfly(t_stack_node **a, t_stack_node **b, int count)
+{
+	int	i;
+	int	n;
+
+	i = 0;
+	if (count <= 100)
+		n = 15;
+	else
+		n = 30;
+	while (*a)
+	{
+		if ((*a)->index <= i + n)
+		{
+			pb(a, b);
+			i++;
+		}
+		if ((*a)->index <= i)
+		{
+			pb(a, b);
+			rb(b);
+			i++;
+		}
+		if ((*a)->index > i + n)
+			ra(a);
+	}
+	
+}
 
 t_stack_node *three_sort_max(t_stack_node *stack)
 {
