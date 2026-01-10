@@ -6,7 +6,7 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:47:16 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/09 18:27:04 by amurtas          ###   ########.fr       */
+/*   Updated: 2026/01/10 13:22:27 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,26 @@ void	indexation(t_stack_node *a)
 
 int	find_max(t_stack_node **b)
 {
-	int				b_size;
-	int 			targ_ind;
+	int				current_pos;
+	int 			max_val;
+	int				max_pos;
 	t_stack_node 	*current;
 	
-	b_size = ft_lsttsize((*b));
-	targ_ind = 0;
+	current_pos = 0;
+	max_val = -2147483648;
+	max_pos = 0;
 	current = (*b);
-	while (current->index != b_size - 1)
+	while (current)
 	{
+		if (current->index > max_val)
+		{
+			max_val = current->index;
+			max_pos = current_pos;
+		}
 		current = current->next;
-		targ_ind++;
+		current_pos++;
 	}	
-	return (targ_ind);
+	return (max_pos);
 }
 
 void	butterfly(t_stack_node **a, t_stack_node **b, int count)
@@ -89,38 +96,6 @@ void	butterfly(t_stack_node **a, t_stack_node **b, int count)
 				rb(b);
 			else
 				rrb(b);
-	
+		}
 	}
-}
-
-t_stack_node *three_sort_max(t_stack_node *stack)
-{
-	int	nb1;
-	int	nb2;
-	int	nb3;
-	
-	nb1 = stack->value;
-	nb2 = stack->next->value;
-	nb3 = stack->next->next->value;
-
-	if (nb1 > nb2 && nb1 > nb3)
-		return(stack);
-	if (nb2 > nb1 && nb2 >nb3)
-		return(stack->next);
-	if (nb3 > nb1 && nb3 > nb2)
-		return(stack->next->next);
-	return (stack);
-}
-
-void three_sort(t_stack_node **stack)
-{
-	t_stack_node	*maxnod;
-	
-	maxnod = three_sort_max(*stack);
-	if (maxnod == *stack)
-		ra(stack);
-	else if (maxnod == (*stack)->next)
-		rra(stack);
-	if ((*stack)->value > (*stack)->next->value)
-		sa(stack);
 }

@@ -6,7 +6,7 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:47:16 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/09 12:57:15 by amurtas          ###   ########.fr       */
+/*   Updated: 2026/01/10 17:30:42 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	check_args(int argc)
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
-	//t_stack_node	*b;
+	t_stack_node	*b;
 	char			**args;
 	int				i;
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 		return (0);
 	i = 1;
 	a = NULL;
-	//b = NULL;
+	b = NULL;
 	while (argv[i])
 	{
 		args = ft_split(argv[i], ' ');
@@ -56,8 +56,7 @@ int	main(int argc, char **argv)
 		i++;
 		ft_free_args(args);
 	}
-	if (ft_lsttsize(a) == 3)
-		three_sort(&a);
+	sorting(&a, &b);
 	ft_free_stack(&a);
 	return (0);
 }
