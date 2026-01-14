@@ -6,7 +6,7 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 11:25:14 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/12 14:39:34 by amurtas          ###   ########.fr       */
+/*   Updated: 2026/01/14 17:28:55 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void	ft_free_args(char **args)
 
 void	ft_error(t_stack_node **a, char **args)
 {
-	ft_free_stack(a);
+	if (a && (*a))
+		ft_free_stack(a);
 	if (args != NULL)
 		ft_free_args(args);
 	write(2, "Error\n", 6);
