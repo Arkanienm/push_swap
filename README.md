@@ -1,4 +1,4 @@
-This project has been created as part of the 42 curriculum by amurtas
+*This project has been created as part of the 42 curriculum by amurtas*
 
 # **Description**
 The push_swap project of 42 involves sorting several digits or numbers in ascending order with only a few instructions allowed

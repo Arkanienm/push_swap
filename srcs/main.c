@@ -6,7 +6,7 @@
 /*   By: amurtas <amurtas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:47:16 by amurtas           #+#    #+#             */
-/*   Updated: 2026/01/13 14:06:48 by amurtas          ###   ########.fr       */
+/*   Updated: 2026/01/15 15:55:44 by amurtas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ int	ft_lsttsize(t_stack_node *lst)
 int	check_args(int argc)
 {
 	if (argc < 2)
-	{
-		ft_error(NULL, NULL);
 		return (0);
-	}
 	return (1);
 }
 
