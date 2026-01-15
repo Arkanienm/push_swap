@@ -36,5 +36,4 @@ make
 ```
 
 # **Resources**
-I found several resources on the internet but the main ones are 
-* 
+I found several resources on the internet but the main ones are wikipedia for the butterfly algorithm , gemini for the struct of the project and how butterfly algo works , and some youtube tutorial for doubly linked list .
